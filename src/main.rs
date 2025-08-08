@@ -33,12 +33,6 @@ struct CliArgs {
 
 #[derive(Subcommand, Debug, Clone)]
 enum Commands {
-    /// does testing things
-    Test {
-        /// lists test values
-        #[arg(short, long)]
-        list: bool,
-    },
     /// Remember personal nuget api key
     Auth {
         key: String,
@@ -273,14 +267,6 @@ async fn main() {
     }
 
     match &args.command {
-        Some(Commands::Test { list }) => {
-            if *list {
-                println!("Printing testing lists...");
-            } else {
-                println!("Not printing testing lists...");
-            }
-        }
-
         Some(Commands::Auth { key }) => {
             regular_key(key);
         }
